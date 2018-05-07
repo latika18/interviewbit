@@ -4,48 +4,40 @@
 
 #Code:
 
+import pdb
+import itertools
+
 def maxset(array):
-"""Returns maximum sub array of non-negative numbers"""
-sum = 0
-current_sum = []
-count = 0
-sub_array = []
-sub_array_list = []
+    """Returns maximum sub array of non-negative numbers"""
+    sum = 0
+    max_sum = 0
+    current_sum = 0
+    start = 0
+    stop = 0
+    max_array = array[start:stop]
+    count = 0
+    
+    
+    for i in range(len(array)):
+        if array[i] >= 0:
+            sum = sum + array[i]
+            current_sum = sum
+            stop = stop+1
+            if max_sum < current_sum:
+                max_sum = current_sum
+                if max_array < array[start:stop]:
+                    max_array = array[start:stop]
+                
+            elif max_sum == current_sum:
+                if len(max_array)< len(array[start:stop]):
+                    max_array = array[start:stop]
+                      
+        else :
+            
+            start = i+1
+            stop = start
+            sum = 0
+            current_sum = 0
+           
+    return max_array
 
-for i in range(len(array)):
-    if array[i] >= 0:
-        sum = sum + array[i]
-        sub_array.append(array[i])
-
-    else:
-        current_sum.append(sum)
-        sub_array_list.append(sub_array)
-        sum = 0
-        sub_array = []
-        count += 1
-
-if count == 0:
-    return sub_array
-max_sum = max(current_sum)    
-if max_sum > sum:
-    i= current_sum.index(max_sum)
-    return sub_array_list[i]
-elif max_sum < sum:
-    return sub_array
-elif max_sum == sum:
-    if len(sub_array) > len(max(sub_array_list,key=len)):
-        return sub_array
-    else:
-        return max(sub_array_list,key=len)
-#Test cases :
-
-def main():        
-    print maxset([ 336465782, -278722862, -2145174067, 1101513929, 1315634022, -1369133069, 1059961393, 628175011, -1131176229, -859484421 ])
-    print maxset( [ 756898537, -1973594324, -2038664370, -184803526, 1424268980 ] )
-    print maxset( [ 1, 2, 5, -7, 2, 5 ] )
-    print maxset( [ 1, 2, 5, -7, 2, 5 ] )
-    print maxset( [ 222])
-    print maxset( [ 1, 1])
-    print maxset( [  3, -1, 1, 1, 1, -1, 3])   
-if __name__ == '__main__':
-    main()
