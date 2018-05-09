@@ -1,13 +1,24 @@
 import math
 def list_prime(A):
     
-    list_A = [i for i in range (2,A) ]
+   bool_a = [True for i in range(2,A+3)] # creates boolean list of indeex
+    for  i in range(2, int(math.sqrt(A))+1): # 
+        if bool_a[i]:
+            for j in range( i * i, A +1 , i):
+                if bool_a[j]:
+                    
+                    bool_a[j] = False;
+    
+            
         
-    for i in range(2, int(math.sqrt(A))):
-        for j in (list_A):
-            if j % i == 0 and i != j:
-                list_A.remove(j)
-    return list_A
+    primes = []
+    
+    for i in range(2,A):
+        if bool_a[i]:
+            primes.append(i)
+    return primes
+
+
 
 
 def primesum(A):
