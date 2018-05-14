@@ -19,17 +19,28 @@ A = 3, B = 4
 Code:
   
 def repeatedNumber(A):
-        missing_num = 0
-        repeated_num = 0
-        x = len(A)
-        for i in range(1,x+1):
-            if i not in  A:
-                missing_num = i
-            if A.count(i) == 2:
-                repeated_num = i
-                
-        return repeated_num, missing_num
-  
-  
-  
-  
+    missing_num = 0
+    repeated_num = 0
+    x = len(A)
+    sum_of_num = 0
+    sum_of_squares = 0
+        
+    for i in A:  
+        sum_of_num += i
+        sum_of_squares += i*i
+       
+    sum_of_num_actual = (x*(x+1))/2
+    sum_of_squares_actual = ((x)*(x+1)*(2*x+1) ) / 6
+    print sum_of_num_actual,sum_of_num
+    print sum_of_squares_actual,sum_of_squares
+
+    missing_num =  (((sum_of_squares_actual - sum_of_squares) /(sum_of_num_actual - sum_of_num))
+                    +(sum_of_num_actual - sum_of_num))/2 
+    repeated_num =  (((sum_of_squares_actual - sum_of_squares) /(sum_of_num_actual - sum_of_num))
+                     -(sum_of_num_actual - sum_of_num))/2                  
+    return repeated_num, missing_num
+
+print repeatedNumber([1,2,3,4,5,2,6,8,9])
+
+print repeatedNumber([1,2,3,4,5,16,6,8,9,10,11,12,13,14,15,16])
+   
