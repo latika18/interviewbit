@@ -1,0 +1,8 @@
+def solve(self, A):
+        A.sort()
+        lena = len(A)
+        for i, a in enumerate(A):
+            if a == lena - i - 1 and not ( i!= (lena-1) and A[i+1] == a):
+                return 1
+                
+        return -1
