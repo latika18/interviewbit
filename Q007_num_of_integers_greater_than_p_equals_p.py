@@ -2,31 +2,14 @@
 #If such an integer is found return 1 else return -1.
 
  def solve(A):
-    p = -1
-    sum = 0
-    sub_array = [x for x in A if x>=0 ]
-    sub_array.sort()
-    print sub_array
-    if sub_array == []:
-        p = -1
-    elif min(sub_array) == 0 and max(sub_array) == 0:
-        p = 1
-    else:
-        for i in range(len(sub_array)):
-            for j in range(i+1,len(sub_array)):
-                print i, j
-                if sub_array[j] > sub_array[i]:
-                    sum += 1
-                print sum
-            if sub_array[i] == sum:
-                p = 1
-                break
-            else:
-                sum = 0
-                
-        return p
+        A = sorted([x for x in A if x >= 0], reverse=True)
+        A = list(map(list, enumerate(A)))
+        for i, v in A[1:]:
+            if v == A[i-1][1]:
+                A[i][0] = A[i-1][0]
+        return 1 if any(v == i for i, v in A) else -1
 
-
+Test Cases      
 print solve([4,7,8,9,11])
 print solve([-4, -2, 0, -1, -6 ])
 print solve([-4, -2, -1, -6 ])
