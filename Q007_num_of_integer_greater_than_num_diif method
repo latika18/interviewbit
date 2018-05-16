@@ -1,3 +1,5 @@
+#Find a number p s.t. all the numbers greater than p is equal to p
+
 def solve(self, A):
         A.sort()
         lena = len(A)
