@@ -17,3 +17,17 @@ Given target = 3, return 1 ( 1 corresponds to true )
 
 Return 0 / 1 ( 0 if the element is not present, 1 if the element is present ) for this problem
 
+Code:
+  
+def searchMatrix(self, A, B):
+    status = 0
+    for item in A:
+        if B >= item[0] and B <= item[(len(item)-1)]:
+            if B in item :
+                status = 1
+                
+    if status :
+        return 1
+    else:
+        return 0 
+        
