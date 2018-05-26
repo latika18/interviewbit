@@ -27,32 +27,43 @@ The outermost rectangle is formed by A, then the next outermost is formed by A-1
 
 You will be given A as an argument to the function you need to implement, and you need to return a 2D array.
 import pdb
-def prettyPrint(A):
-    def swap_min(arr):
-        arr
-        k = min(arr)
-        for i in range(len(arr)):
-            if arr[i] == k:
-                arr[i] = k+1       
-        return arr                                                         
-                     
-    size_matrix = 2*A-1
-    matrix = [[] for _ in range(size_matrix)]
-    mid_pos = size_matrix // 2
-    matrix[mid_pos]  = [ A-i for i in range(0,mid_pos)] + [A-i for i in range(mid_pos,-1,-1)]
-    count =0
-    j = 1
-  
-    while j <= mid_pos:## counter from 0 to mid_posv ## count adjacent to mid_pos
-        
-        ref_list = matrix[mid_pos]
-        matrix[mid_pos-j] = matrix[mid_pos+j] = swap_min(ref_list)            
-        j += 1
+    def prettyPrint(A):
+        ##    m x n matrix, rows x column
+        n = m = 2*A -1
+        k = 0 # row start counter
+        l = 0 # column start counter
+        i = 0 # iterator
+
+        matrix = [[0 for _ in range(n)] for _ in range(m)]
     
-    return matrix
+    
+        while k < m and l < n :
+            #insert the first row
+            for i in range(l,n) :
+                if matrix[k][i] == 0:
+                    matrix[k][i] = A  # row index constt, insert in columns
             
-                                         
+            k += 1         # first row printed, so increment start index
 
-
-#print swap_min([1,1,22,3,4,2,5])
-
+            #insert the last column
+            for i in range(k,m) :
+                if matrix[i][n-1]==0:
+                    matrix[i][n-1] = A   # column index constt, insert in rows
+            n -= 1                          # last column printed, so decrement num of columns
+        
+            #insert the last row
+            if (k<m):
+                for i in range(n-1 ,l-1,-1):
+                    if matrix[m-1][i] == 0:
+                        matrix[m-1][i] = A   # row index constt, insert in columns
+            m -= 1                           # last row printed, so decrement num of rows
+            
+            #insert the first column
+            if (l<n):
+                for i in range(m-1,k-1,-1):
+                    if matrix[i][l] == 0:
+                        matrix[i][l] = A # column index constt, insert in rows
+            l += 1      # first column printed, so increment start index
+            A -= 1
+        
+        return matrix 
