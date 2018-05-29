@@ -24,3 +24,10 @@ def reverseWords(A):
 
 #print reverseWords("The sky is blue")
 print reverseWords( "my name is latika agarwal")
+
+# easier approach
+def reverseWords(self, A):
+        arr=A.split(" ")
+        arr2=reversed(arr)
+        return " ".join(arr2)
+
