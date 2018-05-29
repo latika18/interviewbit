@@ -14,34 +14,30 @@ Example:
 
 
 def braces(A):
-    stack = []
-    status = False
-    cnt = 0
-    e_cnt = 1
-    exp_cnt =0 
-    i = 0
-    while i < len(A):
-        while A[i]  != ')':
-            stack.append(A[i])
-            i += 1
-        i += 1
-        
-        for _ in range(len(stack)):
-            k = stack.pop()
-            print k
-            if k == '(':
-                break
-        if stack == []:
-            return 0
-        i += 1
-
-    if stack.pop() == '(':
-        return 1
-    else:
+    x = ['+','-' ,'/','*']
+    
+    
+    if '(' not in A:
         return 0
+    stack = []
+    for i in A:
+        stack.append(i)
+           
+        if i == ')':
+            if not any(i in stack for i in x):
+                return 1
+            stack.pop()
+            if stack.pop() == '(':
+                return 1
+            for _ in range(len(stack)):
+                k = stack.pop()
+                if k == '(':
+                    break
 
-
-print braces("((a+b))")
-"(a/b)+(b*d)+(a*a)+a"
+    return 0
+##print braces("(a)")   
+##print braces("(a+b)")   
+print braces("(a*b)+(b*c)")
+   
 
 
