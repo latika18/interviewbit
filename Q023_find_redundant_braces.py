@@ -13,31 +13,29 @@ Example:
 (a + (a + b)) doesn't have have any redundant braces so answer will be 0
 
 
-def braces(A):
-    x = ['+','-' ,'/','*']
-    
-    
-    if '(' not in A:
+def redundant_braces(exp):
+    """returns 1 if any redundant bracket is present else returns 0"""   
+    cnt = 0  ## counter for elements popped from stack
+    if '(' not in exp:
         return 0
     stack = []
-    for i in A:
+    ## add elements in stack until closing bracket encountered
+    for i in exp:
         stack.append(i)
-           
-        if i == ')':
-            if not any(i in stack for i in x):
+        if i == ')' :
+            stack.pop()  ## remove the last closing bracket
+            while stack.pop() != '(':  ## check for last opening bracket
+                cnt += 1
+            if cnt  == 0 or cnt == 1:
                 return 1
-            stack.pop()
-            if stack.pop() == '(':
-                return 1
-            for _ in range(len(stack)):
-                k = stack.pop()
-                if k == '(':
-                    break
-
+                
+        cnt = 0  ## reset counter to zero
     return 0
-##print braces("(a)")   
-##print braces("(a+b)")   
-print braces("(a*b)+(b*c)")
-   
 
 
+assert redundant_braces("(a)") == 1
+assert redundant_braces("(a+(a+b))") == 0   
+assert redundant_braces("(a+b)")   == 0
+assert redundant_braces("(a*b)+(b*c)") == 0
+assert redundant_braces("(a+((a+b)))") == 1
+assert redundant_braces("((a+(a+b)))") == 1
