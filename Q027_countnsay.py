@@ -11,28 +11,31 @@ Given an integer n, generate the nth sequence.
 Note: The sequence of integers will be represented as a string.
 
 Example:
-
 if n = 2,
 the sequence is 11
+
 #CODE
-def countAndSay(self, A):
+def count_and_say(num):
         string = '11'
         cnt = 0
-        new_string = ''
-        if A == 1:
+        new_string = []
+        if num == 1:
             return "1"
-        while A != 2:
+        while num != 2:
             cnt += 1
             for i in range(len(string)):
                 if i+1 != len(string):
                     if string[i] == string[i+1]:
                         cnt += 1
                     else:
-                        new_string += new_string + str(cnt)+string[i] 
+                        new_string.append(str(cnt)+string[i])
+                        cnt = 1
                 else:
-                    new_string = new_string + str(cnt) +string[i]
+                    new_string.append(str(cnt)+string[i])
             cnt = 0
-            A -= 1
-            string = new_string 
-            new_string = ''
+            num -= 1
+            string = ''.join(new_string)
+            new_string = []
         return string
+
+
