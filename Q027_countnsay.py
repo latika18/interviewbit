@@ -14,3 +14,25 @@ Example:
 
 if n = 2,
 the sequence is 11
+#CODE
+def countAndSay(self, A):
+        string = '11'
+        cnt = 0
+        new_string = ''
+        if A == 1:
+            return "1"
+        while A != 2:
+            cnt += 1
+            for i in range(len(string)):
+                if i+1 != len(string):
+                    if string[i] == string[i+1]:
+                        cnt += 1
+                    else:
+                        new_string += new_string + str(cnt)+string[i] 
+                else:
+                    new_string = new_string + str(cnt) +string[i]
+            cnt = 0
+            A -= 1
+            string = new_string 
+            new_string = ''
+        return string
