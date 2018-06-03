@@ -16,14 +16,22 @@ Input : "aaaabaaa"
 Output : "aaabaaa"
 Seen this question in a real interview before
 #Code
-def longestPalindrome(A):
-        for i in range(len(A)):
-            print A[i+1:]
-            print A[:i:-1]
-            if A[i+1:] == A[:i:-1]:
-                return A[i+1:]
-
-
+def longestPalindrome(self, A):
+        pal_string = ''
+        x = len(A)
+        y = 0 
+        for i in range(0,x):
+            for j in range(x,i-1,-1):
+                new_str =  A[i:j]
+                if new_str == new_str[::-1]:
+                    if len(new_str) >= y:
+                        y = len(new_str)
+                        pal_string = new_str
+                        
+        return pal_string
 
 print longestPalindrome('abb')
+print longestPalindrome('aaaabbaaa')
+print longestPalindrome('caba')
+print longestPalindrome("abbcccbbbcaaccbababcbcabca") #this method fails for this input where two substrings of same size are encountered
 
