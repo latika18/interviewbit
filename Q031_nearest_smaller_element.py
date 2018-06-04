@@ -18,20 +18,16 @@ Example 2:
 Input : A : [3, 2, 1]
 Return : [-1, -1, -1]
 CODE :
-def prevSmaller(self, A):
-        stack = []
-        new_stack = []
+def prev_smaller(arr):
+    new_stack = []
+    status = False
+    for i in range(len(arr)):
+        for j in range(i,-1,-1):
+            if arr[i]>arr[j]:
+                status = True
+                new_stack.append(arr[j])
+                break
+        if not status:
+            new_stack.append(-1)
         status = False
-        for i in range(len(A)):
-            stack.append(A[i])
-            for j in range(i,-1,-1):
-                if A[i]>A[j]:
-                    new_stack.append(A[j])
-                    status = True
-                    break
-            if not status:
-                new_stack.append(-1)
-            status = False
-                
-        return new_stack
-            
+    return new_stack
