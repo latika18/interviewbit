@@ -16,19 +16,35 @@ Input : "aaaabaaa"
 Output : "aaabaaa"
 Seen this question in a real interview before
 #Code
-def longestPalindrome(self, A):
-        pal_string = ''
-        x = len(A)
-        y = 0 
-        for i in range(0,x):
-            for j in range(x,i-1,-1):
-                new_str =  A[i:j]
-                if new_str == new_str[::-1]:
-                    if len(new_str) >= y:
-                        y = len(new_str)
-                        pal_string = new_str
-                        
-        return pal_string
+def longestPalindrome(A): 
+        high = 0
+        low = 0
+        start = 0
+        x= len(A)
+        max_length = 1
+        for i in range(1,x):
+            high = i
+            low = i-1
+            while high < x and low>0 and A[low] == A[high]:
+                if high - low +1 >max_length:
+                    start = low
+                    max_length = high - low + 1
+                high += 1
+                low  -= 1
+            high = i+1
+            low = i-1
+            while high < x and low>=0 and A[low] == A[high]:
+                if high - low +1 >max_length:
+                    start = low
+                    max_length = high - low + 1
+ 
+                high += 1
+                low  -= 1
+                
+             
+        return A[start : start+max_length]
+            
+
 
 print longestPalindrome('abb')
 print longestPalindrome('aaaabbaaa')
