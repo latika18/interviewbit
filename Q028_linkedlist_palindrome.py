@@ -18,19 +18,28 @@ class Solution:
     # @param A : head node of linked list
     # @return an integer
     def lPalin(self, A):
-        stack = []
-        cnt = 1
-        curr = A   
-        prev = A
-        while A.next != None:
-            prev.next = A
-            cnt += 1
-              
-        for i in range(1, cnt//2 ):
-            if curr.val == A.val:
-                curr = curr.next 
-                A.next = prev
-                
-            else: 
-                return 0
-        return 1
+        ptr_P = A
+        ptr_Q = None
+        ispal = False
+        while ptr_P and ptr_P.next:
+            ptr_P = ptr_P.next.next 
+            ptr_Q = A
+            ptr_Q.next = ptr_Q
+            A = A.next
+        if ptr_P:
+            tail = A.next
+        else:
+            tail = A
+            
+        while ptr_Q:
+            isPal = False
+            if ptr_Q.val == tail.val:
+                tail = tail.next
+                ptr_Q = ptr_Q.next
+                ispal = True
+            
+        if ispal :
+            return 1
+            
+        else :
+            return 0
