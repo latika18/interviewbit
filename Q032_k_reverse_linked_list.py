@@ -25,49 +25,39 @@ class Solution:
             node.next = self.head
             self.head = node
 
-    def reverseList(self, B):
-        A = self.head
-        
+    def reverseList(self, A, B):
+        self.head = A
+        prev = None
         current = A
-        C = B 
+        last_head=None
         if B == 1:
-            return A
-        
+            return current
         cnt = 0
-        while current:
-            current = current.next
+        while cnt < B and current:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
             cnt += 1
-        print cnt
-        while cnt != 0:
-            cnt = cnt -C
-            B = C
-            prev = None
-            print "cnt", cnt
-            while B != 0 and A:
-                temp = A.next
-                A.next = prev
-                prev = A
-                A = temp
-                B -= 1
-            print "A", A.val
 
-    
-            
-        return prev.val
-        
+        if A:
+            A.next = self.reverseList(current, B)
+                     
+        return prev
+
+    def print_list(self):
+        temp = self.head
+        while(temp):
+            print temp.val
+            temp = temp.next
               
     
        
 ##llist = Solution([7, 8, 6 ,  3 , 7 ,3 , 6, 8, 7])
 ##print llist.reverseList(1)
 llist_1 = Solution([ 1,2,3,4,5,6])
-print llist_1.reverseList(3)
+print llist_1.print_list()
 
+llist_1.head = llist_1.reverseList(llist_1.head, 3)
+print llist_1.print_list()
                  
-##listpal_2 = Solution([6 , 3 , 7, 3, 6])
-##assert listpal_2.list_palin()
-##listpal_3 = Solution([3, 7 ,3 ])
-##assert listpal_3.list_palin()
-##listpal_4 = Solution([1])
-##assert listpal_4.list_palin()
-
