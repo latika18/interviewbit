@@ -18,17 +18,14 @@ class Solution:
         if A.next is None:
             return A
        
-        curr = A        
-        result = A
-        while curr.next:
-            
-            if curr.val == curr.next.val:
-                curr = curr.next.next
-                result = curr
-            while result.val == curr.val:
-                curr = curr.next
-            result.next  = curr
-            result = result.next
-        return result
-                
+        ptrA = A    
         
+        while ptrA:
+            curr = ptrA.next
+            while curr and ptrA.val == curr.val:
+                curr = curr.next
+            ptrA.next = curr 
+            ptrA = ptrA.next
+            
+        return A
+                
