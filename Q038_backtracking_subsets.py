@@ -20,24 +20,32 @@ If S = [1,2,3], a solution is:
   [3],
 ]
 
+import itertools
 class Solution:
     # @param A : list of integers
     # @return a list of list of integers
-    def subsets(self, A):
-        a  = sorted(A)
+    def subsets(self, B):
+        A = sorted(B)
+        j = len(A)
+        if not A:
+            return A
         stack = [[]]
-        self.append_sub(stack,a)
+        self.append_sub(stack,A,j)
         return stack
         
 
-    def append_sub(self,stack,a):
-        if not a:
+    def append_sub(self,stack,A,j):
+        if not A:
             return stack
-        curr = []
-        stack.append(a[0])
-        for i in a[1:]:
-            curr = curr + [i]
-            stack.append(curr)
+       
+        while j!= 0:
+            stk = list(itertools.combinations(A, j))
+            stk = map(list, stk)
+            for i in stk:
+                stack.append(i)
             
-        self.append_sub(stack,a[1:])
+            j -= 1
+
+        self.append_sub(stack,A[1:],j)
+        stack.sort()
         return stack
