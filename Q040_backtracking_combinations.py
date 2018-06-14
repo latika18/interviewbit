@@ -18,32 +18,33 @@ If n = 4 and k = 2, a solution is:
   [3,4],
 ]
 
+class Solution:
+    # @param n : integer
+    # @param k : integer
+    # @return a list of list of integers
+	b=[]
+	def combine(self, n, k):
+		if(k>n):
+			return []
+		if(k==0):
+		    k=n
+		return self.generate_comb(n,k,1)
+		
+	def generate_comb(self,n,k,start):
+		if(k==1):
+			return [[x] for x in xrange(start,n+1)]
+		else:
+			a=[]
+			temp=[]
+			for i in xrange(start,n+1):
+				a=self.generate_comb(n,k-1,i+1)
+				
+				for j in xrange(0,len(a)):
+					
+					a[j].append(i)
+					a[j].sort()
+				for x in a:
+					temp.append(x)
+			
+			return temp
 
-def combine(A, B):
-    alist = []
-    i = 0
-    
-    while i <= A and A>=B:
-       
-        append_num(alist,i,A,B)
-        i +=1
-        
-    return alist
-    
-def append_num(alist,i,A,B):
-    if i == A:
-        return alist
-    i = i+1
-    j = i
-    a = [i]
-    while i <= A:
-        while B>j:
-            j = j+1
-            a = a + [j]
-            
-        alist.append(a)
-        i = j
-    return alist
-
-
-print combine(4,2)
