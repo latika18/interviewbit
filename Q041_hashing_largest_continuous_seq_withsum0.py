@@ -7,17 +7,17 @@ class Solution:
     # @param A : list of integers
     # @return a list of integers
     def lszero(self, A):
-        end =0
-        
-        for i in range(0,len(A)):
-            sum_0 = A[i]
-            start =i 
-            for j in range(i+1,len(A)):
-            
-                sum_0 += A[j]
-                if sum_0 == 0:
-                    end = j
-                    break
-            
-            
-        return A[start:end+1]       
+        seen_sums = dict()
+        sm = 0
+        strt, end = 0,0
+        seen_sums[0] = 0
+        for idx, a in enumerate(A,1):
+            sm += a
+            if sm in seen_sums:
+                if end-strt < idx - seen_sums[sm]:
+                    strt, end = seen_sums[sm], idx
+            else:
+                seen_sums[sm] = idx
+
+        return A[strt:end] if strt != end else []
+
