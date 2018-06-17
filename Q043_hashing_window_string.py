@@ -10,11 +10,7 @@ Minimum window is "BANC"
  Note:
 If there is no such window in S that covers all characters in T, return the empty string ''.
 If there are multiple such windows, return the first occurring minimum window ( with minimum start index ).
-
-
-
-
-
+CODE : 
 class Solution:
     # @param S : string
     # @param T : string
