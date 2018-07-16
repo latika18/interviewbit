@@ -9,10 +9,7 @@ Given binary tree
     /
    3
 return [1,3,2].
-##Question 26
-##Perform Breadth first traversal on a BST and print the elements traversed
-##Example Input:
-##100,12,98,223,-78,-12,82,96,74,30,789,912,120
+##Code
 
 class Node(object):
     def __init__(self, value,left=None, right=None):
