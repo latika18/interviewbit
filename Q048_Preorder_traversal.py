@@ -41,28 +41,7 @@ class BST(object):
                 self.preorder(root.right)
      
 
-    def postorder(self,root):
-##      left ,right , root
-
-        if root:
-            if root.left:
-                self.postorder(root.left)
-            if root.right:
-                self.postorder(root.right)
-            print root.value
-
-
-    def inorder(self,root):
-##        leftt,root,right
-  
-        if root.left:
-            self.inorder(root.left)
-        print root.value
-        if root.right:
-            self.inorder(root.right)
-                        
-
-
+    
 t = BST(100)
 t.insert(12)
 t.insert(92)
