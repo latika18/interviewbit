@@ -38,30 +38,19 @@ class BinarySearchTree(object):
                 else:
                     current = current.left
 
-            
-    def Breadth_first_search(self,root):
-        """In BFS the Node Values at each level of the Tree are traversed before going to next level"""
 
-        visited = []
-        if root:
-            visited.append(root)
-            print root.value
-        current = root
-        while current :
-            if current.left:
-                print current.left.value
-                visited.append(current.left)
-            if current.right:
-                print current.right.value
-                visited.append(current.right)
-            visited.pop(0)
-            
-            if not visited:
-                break
-            
-            
-            current = visited[0]
-            
+    def inorder(self,root):
+##        leftt,root,right
+  
+        if root.left:
+            self.inorder(root.left)
+        print root.value
+        if root.right:
+            self.inorder(root.right)
+                        
+
+
+        
         
                
   
