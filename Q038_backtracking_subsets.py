@@ -21,7 +21,7 @@ If S = [1,2,3], a solution is:
 ]
 
 import itertools
-class Solution:
+class Subsets:
     # @param A : list of integers
     # @return a list of list of integers
     def subsets(self, B):
