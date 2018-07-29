@@ -56,7 +56,3 @@ t.insert(10)
 print t.root
 print "preorder traversal is this "
 t.preorder(t.root)
-print "postorder traversal is this "
-t.postorder(t.root)
-print "inorder traversal is this "
-t.inorder(t.root)
