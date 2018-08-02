@@ -41,15 +41,15 @@ class BST(object):
                 else:
                     current = current.left
 
-    def preorder(self,root):
+    def zigzagorder(self,root):
 ##        root,left,right
         
       if root:
           print root.value
           if root.left:
-                self.preorder(root.left)
+                self.zigzagorder(root.left)
           if root.right:
-                self.preorder(root.right)
+                self.zigzagorder(root.right)
      
 
     
@@ -65,5 +65,5 @@ t.insert(3)
 t.insert(66)
 t.insert(10)
 print t.root
-print "preorder traversal is this "
-t.preorder(t.root)
+print "zigzag traversal is this "
+t.zigzag(t.root)
