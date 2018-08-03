@@ -1,8 +1,7 @@
 
 ##Question 26
 ##Perform preorder traversal on a BST and print the elements traversed
-##Example Input:
-##100,12,98,223,-78,-12,82,96,74,30,789,912,120
+##preorder traversal is traversed as root, left , right 
 
 class Node(object):
     def __init__(self, value, left=None, right=None):
