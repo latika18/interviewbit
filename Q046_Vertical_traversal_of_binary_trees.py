@@ -17,9 +17,9 @@ returns
     [7],
     [9]
 ]
-
-
 Note : If 2 Tree Nodes shares the same vertical level then the one with lesser depth will come first.
+      
+Code:      
 # Definition for a  binary tree node
 # class TreeNode:
 #     def __init__(self, x):
