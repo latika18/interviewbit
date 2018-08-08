@@ -39,15 +39,7 @@ class BST(object):
                 else:
                     current = current.left
 
-    def preorder(self,root):
-##        root,left,right
-        
-      if root:
-          print root.value
-          if root.left:
-                self.preorder(root.left)
-          if root.right:
-                self.preorder(root.right)
+   
      
 
     def postorder(self,root):
@@ -59,17 +51,6 @@ class BST(object):
             if root.right:
                 self.postorder(root.right)
             print root.value
-
-
-    def inorder(self,root):
-##        leftt,root,right
-  
-        if root.left:
-            self.inorder(root.left)
-        print root.value
-        if root.right:
-            self.inorder(root.right)
-                        
 
 
 t = BST(100)
@@ -84,9 +65,6 @@ t.insert(3)
 t.insert(66)
 t.insert(10)
 print t.root
-print "preorder traversal is this "
-t.preorder(t.root)
+
 print "postorder traversal is this "
 t.postorder(t.root)
-print "inorder traversal is this "
-t.inorder(t.root)
