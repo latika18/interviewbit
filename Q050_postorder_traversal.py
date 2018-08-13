@@ -23,21 +23,21 @@ class Solution:
     # @param A : root node of tree
     # @return a list of integers
     def postorderTraversal(self, A):
-        l = []
-        st = []
-        st.append(A)
-        while st:
-            u = st[-1]
+        list = []
+        stack = []
+        stack.append(A)
+        while stack:
+            u = stack[-1]
             if u.left == None and u.right == None: 
-                l.append(u.val)
-                st = st[:-1]
+                list.append(u.val)
+                stack = stack[:-1]
             if u.right:
-                st.append(u.right)
+                stack.append(u.right)
                 u.right = None
             if u.left:
-                st.append(u.left)
+                stack.append(u.left)
                 u.left = None
             
         
-        return l    
+        return list    
                
