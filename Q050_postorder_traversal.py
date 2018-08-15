@@ -27,7 +27,7 @@ class Solution:
         stack = []
         stack.append(A)
         while stack:
-            u = stack[-1]
+            u = stack[-1]  ## assign the last element of stack
             if u.left == None and u.right == None: 
                 list.append(u.val)
                 stack = stack[:-1]
