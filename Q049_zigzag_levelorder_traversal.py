@@ -15,55 +15,39 @@ return
          [20, 9],
          [15, 7]
 ]
-class Node(object):
-    def __init__(self, value, left=None, right=None):
-        self.value = value
-        self.left = left
-        self.right = right
 
-class BST(object):
-    def __init__(self, value):
-        self.root = Node(value)
 
-    def insert(self, value):
-        current = self.root
-        while current:
-            if value > current.value:
-                if current.right is None:
-                    current.right  = Node(value)
-                    break
-                else:
-                    current = current.right
-            else:
-                if current.left is None :
-                    current.left  = Node(value)
-                    break
-                else:
-                    current = current.left
+# Definition for a  binary tree node
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
 
-    def zigzagorder(self,root):
-##        root,left,right
+class Solution:
+    # @param A : root node of tree
+    # @return a list of list of integers
+    def zigzagLevelOrder(self, A):
+        st_crt_lvl =[A]
+        st_nxt_lvl =[]
+        ans_list = []
         
-      if root:
-          print root.value
-          if root.left:
-                self.zigzagorder(root.left)
-          if root.right:
-                self.zigzagorder(root.right)
-     
-
-    
-t = BST(100)
-t.insert(12)
-t.insert(92)
-t.insert(112)
-t.insert(123)
-t.insert(2)
-t.insert(11)
-t.insert(52)
-t.insert(3)
-t.insert(66)
-t.insert(10)
-print t.root
-print "zigzag traversal is this "
-t.zigzag(t.root)
+        while st_crt_lvl:
+            u = st_crt_lvl[-1]
+            ans_list.append(u) 
+            if u.left:
+                st_nxt_lvl.append(u.left)
+            if u.right:
+                st_nxt_lvl.append(u.right)
+            while st_nxt_lvl:
+                u = st_nxt_lvl.pop()
+                ans_list.append(u)
+                
+                if u.right:
+                    st_crt_lvl.append(u.right)
+                if u.left:
+                    st_crt_lvl.append(u.left)
+                    
+                    
+        return ans_list
+        
