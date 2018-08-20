@@ -30,27 +30,7 @@ Code:
 class Solution:
     # @param A : root node of tree
     # @return a list of list of integers 
-    def __init__(self,root):
-        self.root = TreeNode(value)
         
-    def insert(self,value):
-        current = A
-        while current:
-            if value > current.value:
-                if current.right is None:
-                    current.right = TreeNode(value)
-                    break
-                else:
-                    current = current.right
-            else:
-                if current.left is None:
-                    current.left = TreeNode(value)
-                    break
-                else:
-                    current = current.left
-                    
-        
-    
     def verticalOrderTraversal(self, A):
         if A.left:
             self.verticalOrderTraversal(A.left)
