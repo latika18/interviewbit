@@ -31,10 +31,27 @@ class Solution:
     # @param A : root node of tree
     # @return a list of list of integers 
         
-    def verticalOrderTraversal(self, A):
-        if A.left:
-            self.verticalOrderTraversal(A.left)
-        
-        print root.value
-        if root.right:
-            self.verticalOrderTraversal(root.right)
+   def verticalordertraversal(self,root):
+        visited = []
+        hashmap = {}  ## hashmap to map hd to elements
+        hd = 0  ## horizontal distance
+        level = 0
+        if root:
+            visited.append(root)
+            hashmap[hd] = root
+        current = root
+        while current:
+            if current.left:
+                
+                hashmap[hd-1]  = current.left.value
+                visited.append(current.left)
+            if current.right:
+                hashmap[hd+1] = current.right.value
+                visited.append(current.right)
+                
+            visited.pop(0)
+            if not visited:
+                break
+            hd = hd+1
+            current = visited[0]
+        return hashmap
